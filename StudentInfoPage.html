@@ -1,0 +1,60 @@
+<html>
+	<head>
+	    <title>STUDENT INFO PAGE</title>
+		<link rel="stylesheet" type="text/css" href="/static/style.css">
+	</head>
+
+	<body>
+		<h1>DATA: STUDENT</h1>
+		<a href='/student/create'>Return to Student CRUD Page</a>
+		<br>
+		<br>
+		<a href="/student/list">Return to Student List Page</a>
+		<hr>
+		<h3>ARCHIVE: STUDENT</h3>
+   
+		<div>
+			<form action='/student/{{student_list.key.id()}}' method='post'>
+
+			<div>
+				<label>FIRST NAME</label>
+				<input type='text' name='first_name' value='{{student_list.first_name}}' readonly>
+			</div>
+
+			<div>
+				<label>LAST NAME</label>
+				<input type='text' name='last_name' value='{{student_list.last_name}}' readonly>
+			</div>
+
+			<div>
+				<label>EMAIL ADDRESS</label>
+				<input type='text' name='email' value='{{student_list.email}}' readonly>
+			</div>
+
+			<div>
+				<label>PHONE NUMBER</label>
+				<input type='text' name='phone_number' value='{{student_list.phone_number}}' readonly>
+			</div>
+
+			<div>
+				<label>STUDENT NUMBER</label>
+				<input type='text' name='student_number' value='{{student_list.student_number}}' readonly>
+			</div>
+
+			<div>
+				<label>BIRTHDATE</label>
+				<input type='text' name='birthdate' value='{{student_list.birthdate}}' readonly>
+			</div>
+
+			<div>
+				<label>PICTURE</label>
+				<input type='text' name='picture' value='{{student_list.picture}}' readonly>
+			</div>
+
+			<div>
+				<label>YEAR GRADUATED</label>
+				<input type='text' name='year_graduated' value='{{student_list.year_graduated}}' readonly>
+			</div>
+		</div>
+	</body>
+</html>
