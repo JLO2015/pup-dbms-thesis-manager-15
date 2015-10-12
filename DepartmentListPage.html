@@ -1,0 +1,36 @@
+<html>
+	<head>
+	    <title>DEPARTMENT LIST PAGE</title>
+		<link rel="stylesheet" type="text/css" href="/static/style.css">
+	</head>
+
+	<body>
+		<h1>LIST: DEPARTMENT</h1>
+		<a href='/department/create'>Return to Department CRUD Page</a>
+		<hr>
+		<h3>ARCHIVE: DEPARTMENT</h3>
+   
+		<div>
+		<center>
+			<table>
+				<tr class='thesis_table'>
+					<td><strong><center>DEPARTMENT'S NAME</center></strong></td>
+					<td><strong><center>REMARKS</center></strong></td>
+				<tr>
+			</table>
+		</center>
+
+			{% for departments in department_list %}
+		<center>
+			<table>
+				<tr class='thesis_table'>
+					<td id='student_lname'><center>{{departments.name}}</center></td> 
+					
+					<td></center><a href='/department/{{departments.key.id()}}'> View Details </a></center></td>
+				</tr>
+			{% endfor %}
+			</table>
+		</center>
+		</div>
+	</body>
+</html>
