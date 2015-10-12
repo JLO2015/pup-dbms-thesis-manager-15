@@ -1,0 +1,31 @@
+<html>
+	<head>
+	    <title>COLLEGE INFO PAGE</title>
+		<link rel="stylesheet" type="text/css" href="/static/style.css">
+	</head>
+
+	<body>
+		<h1>DATA: COLLEGE</h1>
+		<a href='/college/create'>Return to College CRUD Page</a>
+		<br>
+		<br>
+		<a href="/college/list">Return to College List Page</a>
+		<hr>
+		<h3>ARCHIVE: COLLEGE</h3>
+  
+		<div>
+			<form action='/college/{{college_list.key.id()}}' method='post'>
+
+			<div>
+				<label>COLLEGE</label>
+				<input type='text' name='name' value='{{college_list.name}}' placeholder='College'readonly>
+			</div>
+
+			<div>
+				<label>DEPARTMENT</label>
+				<input type='text' name='departments' value='{{college_list.departments}}' placeholder='Department' readonly>
+			</div>
+
+		</div>
+	</body>
+</html>
