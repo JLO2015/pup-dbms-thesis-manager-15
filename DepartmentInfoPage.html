@@ -1,0 +1,31 @@
+<html>
+	<head>
+	    <title>DEPARTMENT INFO PAGE</title>
+		<link rel="stylesheet" type="text/css" href="/static/style.css">
+	</head>
+
+	<body>
+		<h1>DATA: DEPARTMENT</h1>
+		<a href='/department/create'>Return to Department CRUD Page</a>
+		<br>
+		<br>
+		<a href="/department/list">Return to Department List Page</a>
+		<hr>
+		<h3>ARCHIVE: DEPARTMENT</h3>
+  
+		<div>
+			<form action='/department/{{department_list.key.id()}}' method='post'>
+
+			<div>
+				<label>DEPARTMENT</label>
+				<input type='text' name='name' value='{{department_list.name}}' placeholder='Department'readonly>
+			</div>
+
+			<div>
+				<label>CHAIRPERSON</label>
+				<input type='text' name='chairperson' value='{{department_list.chairperson}}' placeholder='Chairperson' readonly>
+			</div>
+
+		</div>
+	</body>
+</html>
