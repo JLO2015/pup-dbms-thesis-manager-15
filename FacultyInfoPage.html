@@ -1,0 +1,56 @@
+<html>
+	<head>
+	    <title>FACULTY INFO PAGE</title>
+		<link rel="stylesheet" type="text/css" href="/static/style.css">
+	</head>
+
+	<body>
+		<h1>DATA: FACULTY</h1>
+		<a href='/faculty/create'>Return to Faculty CRUD Page</a>
+		<br>
+		<br>
+		<a href="/faculty/list">Return to Faculty List Page</a>
+		<hr>
+		<h3>ARCHIVE: FACULTY</h3>
+   
+		<div>
+			<form action='/faculty/{{faculty_list.key.id()}}' method='post'>
+
+			<div>
+				<label>TITLE</label>
+				<input type='text' name='title' value='{{faculty_list.first_name}}' placeholder='title'readonly>
+			</div>
+
+			<div>
+				<label>FIRST NAME</label>
+				<input type='text' name='first_name' value='{{faculty_list.first_name}}' placeholder='First Name'readonly>
+			</div>
+			
+			<div>
+				<label>LAST NAME</label>
+				<input type='text' name='last_name' value='{{faculty_list.last_name}}' placeholder='Last Name'readonly>
+			</div>
+			
+			<div>
+				<label>EMAIL ADDRESS</label>
+				<input type='text' name='email' value='{{faculty_list.email}}' placeholder='EMail Address'readonly>
+			</div>
+
+			<div>
+				<label>PHONE NUMBER</label>
+				<input type='text' name='phone_number' value='{{faculty_list.phone_number}}' placeholder='Phone Number'readonly>
+			</div>
+
+			<div>
+				<label>BIRTHDATE</label>
+				<input type='text' name='birthdate' value='{{faculty_list.birthdate}}' placeholder='Birthdate'readonly>
+			</div>
+
+			<div>
+				<label>PICTURE</label>
+				<input type='text' name='picture' value='{{faculty_list.picture}}' placeholder='Picture'readonly>
+			</div>
+		</div>
+
+	</body>
+</html>
