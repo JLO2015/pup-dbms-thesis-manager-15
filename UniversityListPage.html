@@ -1,0 +1,35 @@
+<html>
+	<head>
+	    <title> UNIVERSITY LIST PAGE</title>
+		<link rel="stylesheet" type="text/css" href="/static/style.css">
+	</head>
+
+	<body>
+		<h1>UNIVERSITY LIST PAGE</h1>
+		<a href='/university/create'>Return to University CRUD Page</a>
+		<hr>
+		<h3>ARCHIVE: UNIVERSITY</h3>
+   
+		<div class='thesis_table'>
+		<center>
+			<table>
+				<tr class='thesis_table'>
+					<td><strong><center>UNIVERSITY'S NAME</center></strong></td>
+					<td><strong><center>REMARKS</center></strong></td>
+			</table>
+		</center>
+
+			{% for university in university_list %}
+		<center>
+			<table>
+				<tr>
+					<td id='student_lname'><center>{{university.name}}</center></td> 
+					
+					<td><center><a href='/university/{{university.key.id()}}'> View Details</a></center></td>
+				</tr>
+			{% endfor %}
+			</table>
+		</center>
+		</div>
+	</body>
+</html>
