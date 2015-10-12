@@ -1,0 +1,137 @@
+<html>
+	<head>
+	   <script src="script.js"></script>
+		<link type="text/css" rel="stylesheet" href="/static/style.css" />
+		<title>THESIS PAGE</title>
+	</head>
+
+	<body>
+		<h1>APPLICATION: THESIS</h1>
+		<p>
+		<a href='{{logout_url}}'>LOG OUT</a>
+		</p>
+
+		<a href='/thesis/list/all'>DATABASE: THESIS</a>
+		<hr>
+		<div>
+			<h3>Thesis CRUD Page</h3>
+		</div>
+
+		<div>
+			<ul>
+				<!-- MENU BAR -->
+				<li><a href='/thesis/create'><span>THESIS</span></a></li>
+
+				<li><a href='/faculty/create'><span>FACULTY</span></a></li>
+
+				<li><a href='/student/create'><span>STUDENT</span></a></li>
+
+				<li><a href='/university/create'><span>UNIVERSITY</span></a></li>
+
+				<li><a href='/college/create'><span>COLLEGE</span></a></li>
+
+				<li><a href='/department/create'><span>DEPARTMENT</span></a></li>
+				
+			</ul>
+		</div>
+
+		<div>
+			<form method='post'>
+				<h3>FORM FOR CREATING THESIS IN THIS APP</h3>
+				<div>
+					<label>YEAR</label>
+					<select name='yearlist'>
+						<option>2011</option>
+						<option>2012</option>
+						<option>2013</option>
+						<option>2014</option>
+						<option>2015</option>
+					</select>
+				</div>
+
+				<br>
+				<div>
+					<label>TITLE</label>
+					<input type='text' name='title' required>
+				</div>
+
+				<br>
+				<div>
+					<label>ABSTRACT</label>
+					<textarea type='text' name='abstract'></textarea>
+				</div>
+
+				<br>
+				<div>
+					<label>ADVISER</label>
+					<input type='text' name='adviser' required>
+				</div>
+
+				<br>
+				<div>
+					<label>SECTION</label>
+					<select name='section'>
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5</option>
+					</select>
+				</div>
+
+				<br>
+				<div>
+					<label>UNIVERSITY</label>
+					<input type='text' name='university' required>
+				</div>
+
+				<br>
+				<div>
+					<label>COLLEGE</label>
+					<input type='text' name='college' required>
+				</div>
+
+				<br>
+				<div>
+					<label>DEPARTMENT</label>
+					<input type='text' name='department' required>
+				</div>
+
+				<br>
+				<div>
+					<label>PROPONENT 1</label>
+					<input type='text' name='member1' required>
+				</div>
+
+				<br>
+				<div>
+					<label>PROPONENT 2</label>
+					<input type='text' name='member2'>
+				</div>
+
+				<br>
+				<div>
+					<label>PROPONENT 3</label>
+					<input type='text' name='member3'>
+				</div>
+
+				<br>
+				<div>
+					<label>PROPONENT 4</label>
+					<input type='text' name='member4'>
+				</div>
+
+				<br>
+				<div>
+					<label>PROPONENT 5</label>
+					<input type='text' name='member5'>
+				</div>
+				
+				<br>
+				<div>
+					<input type='submit' value='PROCEED'>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>
