@@ -1,0 +1,93 @@
+<html>
+	<head>
+	   <script src="script.js"></script>
+		<link type="text/css" rel="stylesheet" href="/static/style.css" />
+		<title>STUDENT PAGE</title>
+	</head>
+	<body>
+		<h1>APPLICATION: STUDENT</h1>
+		<p>
+		<a href='{{logout_url}}'>LOG OUT</a>
+		</p>
+		<a href='/student/list'>DATABASE: STUDENT</a>
+		<hr>
+		<div>
+			<h3>Student CRUD Page</h3>
+		</div>
+
+		<div id='cssmenu'>
+			<ul>
+			<!-- MENU BAR -->
+				<li><a href='/thesis/create'><span>THESIS</span></a></li>
+
+				<li><a href='/faculty/create'><span>FACULTY</span></a></li>
+
+				<li><a href='/student/create'><span>STUDENT</span></a></li>
+
+				<li><a href='/university/create'><span>UNIVERSITY</span></a></li>
+
+				<li><a href='/college/create'><span>COLLEGE</span></a></li>
+
+				<li><a href='/department/create'><span>DEPARTMENT</span></a></li>
+				
+			</ul>
+		</div>
+		<div>
+			<form method='post'>
+				<h2>FORM FOR CREATING STUDENT IN THIS APP</h2>
+				
+				<div>
+					<label>FIRST NAME</label>
+					<input type='text' name='first_name' required>
+				</div>
+
+				<br>
+				<div>
+					<label>LAST NAME </label>
+					<input type='text' name='last_name' required>
+				</div>
+
+				<br>
+				<div>
+					<label>EMAIL ADDRESS</label>
+					<input type='text' name='email' required>
+				</div>
+
+				<br>
+				<div>
+					<label>PHONE NUMBER </label>
+					<input type='number' name='phone_number' required>
+				</div>
+
+				<br>
+				<div>
+					<label>STUDENT NUMBER</label>
+					<input type='text' name='student_number' required>
+				</div>
+
+				<br>
+				<div>
+					<label>BIRTHDATE </label>
+					<input type='text' name='birthdate' required>
+				</div>
+
+				<br>
+				<div>
+					<label>PICTURE</label>
+					<input type='text' name='picture'>
+				</div>
+
+				<br>
+				<div>
+					<label>YEAR GRADUATED </label>
+					<input type='text' name='year_graduated' required>
+				</div>
+				
+				<br>
+				<div>
+					<input type='submit' value='PROCEED'>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>
