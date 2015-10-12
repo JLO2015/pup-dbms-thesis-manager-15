@@ -1,0 +1,35 @@
+<html>
+	<head>
+	    <title>UNIVERSITY INFO PAGE</title>
+		<link rel="stylesheet" type="text/css" href="/static/style.css">
+	</head>
+
+	<body>
+		<h1>DATA: UNIVERSITY</h1>
+		<a href='/university/create'>Return to University CRUD Page</a>
+		<br>
+		<br>
+		<a href="/university/list">Return to University Page</a>
+		<hr>
+		<h3>ARCHIVE: UNIVERSITY</h3>
+   
+    <div>
+			<form action='/university/{{university_list.key.id()}}' method='post'>
+
+			<div>
+				<label>NAME</label>
+				<input type='text' name='name' value='{{university_list.name}}' placeholder='University Name'readonly>
+			</div>
+			
+			<div>
+				<label> ADDRESS</label>
+				<input type='text' name='address' value='{{university_list.address}}' placeholder='University Address'readonly>
+			</div>
+
+			<div>
+				<label>UNIVERSITY INITIAL</label>
+				<input type='text' name='initial' value='{{university_list.initial}}' placeholder='University Initial'readonly>
+			</div>
+		</div>
+	</body>
+</html>
