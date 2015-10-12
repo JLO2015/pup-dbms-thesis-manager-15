@@ -1,0 +1,84 @@
+<html>
+	<head>
+	    <title>THESIS INFO PAGE</title>
+		<link rel="stylesheet" type="text/css" href="/static/style.css">
+	</head>
+
+	<body>
+		<h1>DATA: THESIS</h1>
+		<a href='/thesis/create'>Return to Thesis CRUD Page</a>
+		<br>
+		<br>
+		<a href="/thesis/list/all">Return to Thesis List Page</a>
+		<hr>
+		<h3>ARCHIVE: THESIS</h3>
+   
+		<div>
+			<form method='post'>
+				<div>
+					<label>YEAR</label>
+					<input type='text' name='yearlist' value='{{thesis_list.yearlist}}' readonly>
+				</div>
+
+				<div>
+					<label>TITLE</label>
+					<input type='text' name='title' value='{{thesis_list.title}}' readonly>
+				</div>
+
+				<div>
+					<label>ABSTRACT</label>
+					<textarea readonly type='text' name='abstract'>{{thesis_list.abstract}}</textarea>
+				</div>
+
+				<div>
+					<label>ADVISER</label>
+					<input type='text' name='adviser' value='{{thesis_list.adviser}}' readonly>
+				</div>
+
+				<div>
+					<label>SECTION</label>
+					<input type='text' name='section' value='{{thesis_list.section}}' readonly>
+				</div>
+
+				<div>
+					<label>UNIVERSITY</label>
+					<input type='text' name='university' value='{{thesis_list.university}}' readonly>
+				</div>
+
+				<div>
+					<label>COLLEGE</label>
+					<input type='text' name='college' value='{{thesis_list.college}}' readonly>
+				</div>
+
+				<div>
+					<label>DEPARTMENT</label>
+					<input type='text' name='department' value='{{thesis_list.department}}' readonly>
+				</div>
+
+				<div>
+					<label>PROPONENT 1</label>
+					<input type='text' name='member1' value='{{thesis_list.member1}}' readonly>
+				</div>
+
+				<div>
+					<label>PROPONENT 2</label>
+					<input type='text' name='member2' value='{{thesis_list.member2}}' readonly>
+				</div>
+
+				<div>
+					<label>PROPONENT 3</label>
+					<input type='text' name='member3' value='{{thesis_list.member3}}' readonly>
+				</div>
+
+				<div>
+					<label>PROPONENT 4</label>
+					<input type='text' name='member4' value='{{thesis_list.member4}}' readonly>
+				</div>
+
+				<div>
+					<label>PROPONENT 5</label>
+					<input type='text' name='member5' value='{{thesis_list.member5}}' readonly>
+				</div>
+		</div>
+	</body>
+</html>
