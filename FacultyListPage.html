@@ -1,0 +1,39 @@
+<html>
+	<head>
+	    <title>FACULTY LIST PAGE</title>
+		<link rel="stylesheet" type="text/css" href="/static/style.css">
+	</head>
+	
+	<body>
+		<h1>LIST: FACULTY</h1>
+		<a href='/faculty/create'>Return to Faculty CRUD Page</a>
+		<hr>
+		<h3>ARCHIVE: FACULTY</h3>
+   
+		<div>
+		<center>
+			<table>
+				<tr class='thesis_table'>
+					<td><strong><center>LAST NAME</center></strong></td>
+					<td><strong><center>FIRST NAME</center></strong></td>
+					<td><strong><center>REMARKS</center></strong></td>
+				</tr>
+			</table>
+		</center>
+
+			{% for faculty in faculty_list %}
+		<center>
+			<table>
+				<tr class='thesis_table'>
+					<td id='student_lname'><center>{{faculty.last_name}}</center></td> 
+
+					<td id='student_fname'><center>{{faculty.first_name}}</center></td>
+
+					<td><center><a href='/faculty/{{faculty.key.id()}}'> View Details</a></center></td>
+				</tr>
+			{% endfor %}
+			</table>
+		</center>
+		</div>
+	</body>
+</html>
