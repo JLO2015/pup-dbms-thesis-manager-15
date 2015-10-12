@@ -1,0 +1,47 @@
+h1 {
+	text-align: center;
+}
+
+form input[type=text] {
+    width: 80%;
+    margin-top: 5px;
+	margin-bottom: 5px;
+    line-height: 20px;
+}
+
+form textarea[type=text]{
+	width: 90%;
+	height: 15%;
+}
+
+.student_data{
+  width:60%;
+  margin:auto;
+}
+
+.student_table1 td{
+  border:1px solid black;
+  width:120%;
+  margin:auto;
+  padding:10px;
+}
+
+.thesis_data{
+  width:90%;
+  margin:auto;
+}
+
+.thesis_table td{
+  border:1px solid black;
+  width:90%;
+  margin:auto;
+  padding:10px;
+  font-weight: bold;
+}
+
+.thesis_table1 td{
+  border:1px solid black;
+  width:100%;
+  margin:auto;
+  padding:10px;
+}
