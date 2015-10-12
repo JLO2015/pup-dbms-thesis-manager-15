@@ -1,0 +1,66 @@
+<html>
+	<head>
+		<script src="script.js"></script>
+		<link type="text/css" rel="stylesheet" href="/static/style.css" />
+		<title>UNIVERSITY PAGE</title>
+	</head>
+
+	<body>
+		<h1>APPLICATION: UNIVERSITY</h1>
+		<p>
+		<a href='{{logout_url}}'>LOG OUT</a>
+		</p>
+
+		<a href='/university/list'>DATABASE: UNIVERSITY</a>
+		<hr>
+		
+		<div>
+			<h3>University CRUD Page</h3>
+		</div>
+
+		<div>
+			<ul>
+				<!-- MENU BAR -->
+				
+				<li><a href='/thesis/create'><span>THESIS</span></a></li>
+
+				<li><a href='/faculty/create'><span>FACULTY</span></a></li>
+
+				<li><a href='/student/create'><span>STUDENT</span></a></li>
+
+				<li><a href='/university/create'><span>UNIVERSITY</span></a></li>
+
+				<li><a href='/college/create'><span>COLLEGE</span></a></li>
+
+				<li><a href='/department/create'><span>DEPARTMENT</span></a></li>
+			</ul>
+		</div>
+
+		<div>
+			<form method='post'>
+				<h2>FORM FOR CREATING UNIVERSITY IN THIS APP</h2>
+				<div>
+					<label>NAME</label>
+					<input type='text' name='name' placeholder="University Name">
+				</div>
+
+				<br>
+				<div>
+					<label>ADDRESS</label>
+					<input type='text' name='address' placeholder="University Address">
+				</div>
+
+				<br>
+				<div>
+					<label>INITIAL</label>
+					<input type='text' name='initial' placeholder="University Initial">
+				</div>
+				
+				<br>
+				<div>
+					<input type='submit' value='PROCEED'>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>
