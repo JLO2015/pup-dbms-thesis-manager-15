@@ -1,0 +1,36 @@
+<html>
+	<head>
+	    <title>COLLEGE LIST PAGE</title>
+		<link rel="stylesheet" type="text/css" href="/static/style.css">
+	</head>
+
+	<body>
+		<h1>LIST: COLLEGE</h1>
+		<a href='/college/create'>Return to College CRUD Page</a>
+		<hr>
+		<h3>ARCHIVE: COLLEGE</h3>
+   
+		<div>
+		<center>
+			<table>
+				<tr class='thesis_table'>
+					<td><strong><center>COLLEGE'S NAME</center></strong></td>
+					<td><strong><center>REMARKS</center></strong></td>
+				<tr>
+			</table>
+		</center>
+
+			{% for college in college_list %}
+		<center>
+			<table>
+				<tr class='thesis_table'>
+					<td id='student_lname'><center>{{college.name}}</center></td> 
+					
+					<td></center><a href='/college/{{college.key.id()}}'> View Details </a></center></td>
+				</tr>
+			{% endfor %}
+			</table>
+		</center>
+		</div>
+	</body>
+</html>
