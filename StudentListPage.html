@@ -1,0 +1,38 @@
+<html>
+	<head>
+	    <title>STUDENT LIST PAGE</title>
+		<link rel="stylesheet" type="text/css" href="/static/style.css">
+	</head>
+
+	<body>
+		<h1>LIST: STUDENT</h1>
+		<a href='/student/create'>Return to Student CRUD Page</a>
+		<hr>
+		<h3 id='header'>ARCHIVE: STUDENT</h3>
+   
+		<div>
+		<center>
+			<table>
+				<tr class='thesis_table'>
+					<td><strong><center>LAST NAME</center></strong></td>
+					<td><strong><center>FIRST NAME</center></strong></td>
+					<td><strong><center>REMARKS</center></strong></td>
+			</table>
+		</center>
+
+			{% for student in student_list %}
+		<center>
+			<table>
+				<tr class='thesis_table'>
+					<td id='student_lname'><center>{{student.last_name}}</center></td> 
+
+					<td id='student_fname'><center>{{student.first_name}}</center></td>
+
+					<td><center><a href='/student/{{student.key.id()}}'> View Details</a></center></td>
+				</tr>
+			{% endfor %}
+			</table>
+		</center>
+		</div>
+	</body>
+</html>
