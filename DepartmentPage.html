@@ -1,0 +1,58 @@
+<html>
+	<head>
+		<script src="script.js"></script>
+		<link type="text/css" rel="stylesheet" href="/static/style.css" />
+		<title>DEPARTMENT PAGE</title>
+	</head>
+
+	<body>
+		<h1>APPLICATION: DEPARTMENT</h1>
+		<p>
+		<a href='{{logout_url}}'>LOG OUT</a>
+		</p>
+		<a href='/department/list'>DATABASE: DEPARTMENT</a>
+		<hr>
+
+		<div>
+			<h3>Department CRUD Page</h3>
+		</div>
+
+		<div>
+			<ul>
+			<!-- MENU BAR -->
+				<li><a href='/thesis/create'><span>THESIS</span></a></li>
+
+				<li><a href='/faculty/create'><span>FACULTY</span></a></li>
+
+				<li><a href='/student/create'><span>STUDENT</span></a></li>
+
+				<li><a href='/university/create'><span>UNIVERSITY</span></a></li>
+
+				<li><a href='/college/create'><span>COLLEGE</span></a></li>
+
+				<li><a href='/department/create'><span>DEPARTMENT</span></a></li>
+			</ul>
+		</div>
+
+		<div>
+			<form method='post'>
+				<h2>FORM FOR CREATING DEPARTMENT IN THIS APP</h2>
+				<div>
+					<label>DEPARTMENT'S NAME</label>
+					<input type='text' name='departments' required>
+				</div>
+
+				<br>
+				<div>
+					<label>CHAIRPERSON'S NAME</label>
+					<input type='text' name='chairperson' required>
+				</div>
+
+				<br>
+				<div>
+					<input type='submit' value='PROCEED'>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>
