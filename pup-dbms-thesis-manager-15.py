@@ -14,6 +14,13 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 	extensions = ['jinja2.ext.autoescape'],
 	autoescape = True)
 
+DEFAULT_GUESTBOOK_NAME = 'default_guestbook'
+def guestbook_key(guestbook_name=DEFAULT_GUESTBOOK_NAME):
+    """Constructs a Datastore key for a Guestbook entity.
+
+    We use guestbook_name as the key.
+    """
+    return ndb.Key('Guestbook', guestbook_name)
 
 #For DB- Login and Registration System
 class User(ndb.Model):
@@ -44,35 +51,6 @@ class RegistrationPage(webapp2.RequestHandler):
 		user.phone_number = self.request.get('phone_number')
 		user.put()
 		self.redirect('/RegistrationUP')
-
-	# def get(self):
- #        loggedin_user = users.get_current_user()
- #        if loggedin_user:
- #            user_key = ndb.Key('User',loggedin_user.user_id())
- #            user = user_key.get()
- #            if user:
- #                self.redirect('/RegistrationUP')
- #            else:
- #                if loggedin_user:
- #                    template = JINJA_ENVIRONMENT.get_template('RegistrationPage.html')
- #                    logout_url = users.create_logout_url('/Login')
- #                    template_value = {
- #                        'logout_url' : logout_url
- #                    }
- #                    self.response.write(template.render(template_value))
-                    
- #                else:
- #                    login_url = users.create_login_url('/Registration')
- #                    self.redirect(login_url)
- #        else:
- #            self.redirect('/Login')
-
- #    def post(self):
- #        loggedin_user = users.get_current_user()
- #        user =  User(id=loggedin_user.user_id(), email=loggedin_user.email(), first_name=self.request.get('first_name'), last_name=self.request.get('last_name'), phone_number=self.request.get('phone_number'))
- #        user.put()
- #        self.redirect('/MainPage')
-
 #Back
 class RegistrationCompPage(webapp2.RequestHandler):
 	def get(self):
@@ -84,15 +62,16 @@ class LoginPage(webapp2.RequestHandler):
 	def get(self):
 		user = users.get_current_user()
 
+###
 		template_values = {
 			'login_url': users.create_login_url(self.request.uri)
 		}
 
-		# if user:
-		# 	self.redirect('/Registration')
-		# else:
-		# 	template = JINJA_ENVIRONMENT.get_template('MainPage.html')
-		# 	self.response.write(template.render(template_values))
+	# 	if user:
+	# 		self.redirect('/Registration')
+	# 	else:
+	# 		template = JINJA_ENVIRONMENT.get_template('MainPage.html')
+	# 		self.response.write(template.render(template_values))
 
 
 		if user:
@@ -109,8 +88,18 @@ class LoginPage(webapp2.RequestHandler):
 #Body
 class MainPage(webapp2.RequestHandler):
 	def get(self):
-		template = JINJA_ENVIRONMENT.get_template('MainPage.html')
-		self.response.write(template.render())
+		# template = JINJA_ENVIRONMENT.get_template('MainPage.html')
+		# self.response.write(template.render())
+
+		user=users.get_current_user()
+
+		if user:
+			logout_url=users.create_logout_url('/')
+			template_values = {
+				'logout_url': logout_url
+			}
+			template=JINJA_ENVIRONMENT.get_template('MainPage.html')
+			self.response.write(template.render(template_values))
 
 	# def get(self):
  #        user = users.get_current_user()
@@ -143,6 +132,8 @@ class Thesis(ndb.Model):
 	member5 = ndb.StringProperty(indexed=True)
 	yearlist = ndb.StringProperty(indexed=True)
 	section = ndb.StringProperty(indexed=True)
+	filtered = ndb.StringProperty(indexed=True)
+	filtered_year = ndb.StringProperty(indexed=True)
 	date = ndb.DateTimeProperty(auto_now_add=True)
 
 #THESIS PAGE
@@ -202,6 +193,35 @@ class ThesisInfoPage(webapp2.RequestHandler):
 		}
 		template = JINJA_ENVIRONMENT.get_template('ThesisInfoPage.html')
 		self.response.write(template.render(template_data))
+
+class ThesisFilter(webapp2.RequestHandler):
+	def get(self):
+		template=JINJA_ENVIRONMENT.get_template('ThesisFilter.html')
+		self.response.write(template.render())
+
+class ThesisFilterYear(webapp2.RequestHandler):
+	def get(self):
+		filtering=Filter.query().order(-Filter.date).fetch()
+		logging.info(filtering)
+		template_data={
+			'filter_list':filtering
+		}
+		template=JINJA_ENVIRONMENT.get_template('ThesisFilterYear.html')
+		self.response.write(template.render(template_data))
+	def post(self):
+		filter_year=Filter()
+		filter_year.thesis_filter_year=self.request.get('thesis_filter_year')
+		filter_year.put()
+		self.redirect('/thesis/year')
+
+class ThesisListPage2012(webapp2.RequestHandler):
+	def get(self,yearlist):
+		thesis=Thesis.query().order(-Faculty.date).fetch()
+		year='2012'
+		query_year=thesis.filter(Thesis.yearlist==year)
+		# year=self.request.get('thesis_filter_year')
+		template = JINJA_ENVIRONMENT.get_template('ThesisListPage2012.html')
+		self.response.write(template.render())
 
 
 #FACULTY
@@ -490,24 +510,45 @@ class DepartmentInfoPage(webapp2.RequestHandler):
 		self.response.write(template.render(template_data))
 
 
+#Filtering by category
+class Filter(ndb.Model):
+	filtered_year = ndb.StringProperty(indexed=True)
+	date = ndb.DateTimeProperty(auto_now_add=True)
+
+#Search option
+class SearchPage(webapp2.RequestHandler):
+	def get(self):
+		thesis=Thesis.query().order(-Thesis.date).fetch()
+		logging.info(thesis)
+		template_data={
+			'thesis_list':thesis
+		}
+		template = JINJA_ENVIRONMENT.get_template('SearchPage.html')
+		self.response.write(template.render(template_data))
+
 #DataStore
- f=csv.reader(open('thesis_list.csv','r'),skipinitialspace=True)
- for row in f:
- 	thesis = Thesis()
- 	thesis.university = row[0]
- 	thesis.college = row[1]
- 	thesis.department = row[2]
- 	thesis.yearlist = row[3]
- 	thesis.title = row[4]
- 	thesis.abstract = row[5]
- 	thesis.section = row[6]
- 	thesis.adviser = row[7]
- 	thesis.member1 = row[8]
- 	thesis.member2 = row[9]
- 	thesis.member3 = row[10]
- 	thesis.member4 = row[11]
- 	thesis.member5 = row[12]
- 	thesis.put()
+class ImportCSV(webapp2.RequestHandler):
+	def get(self):
+		f=csv.reader(open('thesis_list.csv','r'),skipinitialspace=True)
+		for row in f:
+			thesis = Thesis()
+			thesis.university = row[0]
+			thesis.college = row[1]
+			thesis.department = row[2]
+			thesis.yearlist = row[3]
+			thesis.title = row[4]
+			thesis.abstract = row[5]
+			thesis.section = row[6]
+			thesis.adviser = row[7]
+			thesis.member1 = row[8]
+			thesis.member2 = row[9]
+			thesis.member3 = row[10]
+			thesis.member4 = row[11]
+			thesis.member5 = row[12]
+			thesis.put()
+
+		template = JINJA_ENVIRONMENT.get_template('ImportCSV.html')
+		self.response.write(template.render())
 
 app = webapp2.WSGIApplication([
 	('/', HomePage),
@@ -517,7 +558,11 @@ app = webapp2.WSGIApplication([
 	('/MainPage', MainPage),
 	('/thesis/create', ThesisPage),	##
 	('/thesis/create/done', ThesisCompPage),
-	('/thesis/list/all', ThesisListPage), ##Filter ALL Thesis
+	('/thesis/import/done', ImportCSV),
+	('/thesis/filter',ThesisFilter),
+	('/thesis/year',ThesisFilterYear),
+	('/thesis/list/2012', ThesisListPage2012),
+	('/thesis/list/all', ThesisListPage), ##
 	('/thesis/(.*)', ThesisInfoPage),
 	('/faculty/create', FacultyPage), ##
 	('/faculty/create/done', FacultyCompPage),
@@ -539,4 +584,6 @@ app = webapp2.WSGIApplication([
 	('/department/create/done', DepartmentCompPage),
 	('/department/list', DepartmentListPage),
 	('/department/(.*)', DepartmentInfoPage),
+	('/search', SearchPage),
 ], debug = True)
+
