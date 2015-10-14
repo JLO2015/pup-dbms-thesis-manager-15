@@ -11,15 +11,30 @@
 		<a href='{{logout_url}}'>LOG OUT</a>
 		</p>
 
+		<p>
 		<a href='/thesis/list/all'>DATABASE: THESIS</a>
+		</p>
+
+		<p>
+		<a href='/thesis/filter'>THESIS FILTER CATEGORY</a>
+		</p>
+
+		<p>
+		<a href='/thesis/import/done'>IMPORT CSV</a>
+		</p>
+
 		<hr>
 		<div>
 			<h3>Thesis CRUD Page</h3>
 		</div>
 
-		<div>
+		<div id='cssmenu'>
 			<ul>
 				<!-- MENU BAR -->
+				<li><a href='/search'><span>SEARCH</span></a></li>
+
+				<br>
+
 				<li><a href='/thesis/create'><span>THESIS</span></a></li>
 
 				<li><a href='/faculty/create'><span>FACULTY</span></a></li>
@@ -35,7 +50,7 @@
 			</ul>
 		</div>
 
-		<div>
+		<div class='formcss'>
 			<form method='post'>
 				<h3>FORM FOR CREATING THESIS IN THIS APP</h3>
 				<div>
