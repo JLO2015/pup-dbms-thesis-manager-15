@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="/static/style.css"> 
+	</head>
+	
+	<body>
+		<h1>APPLICATION: THESIS</h1>
+		<a href='/thesis/create' class='btn' role='button'>Return to Thesis CRUD Page</a>
+		<hr>
+		<h3 id='searchbar'>Search Thesis' Title and Proponent's Name in this Database</h3>
+		
+		<div class='thesis_data' id='list'>
+			<center>
+			<table>
+			<center>
+				<tr class='thesis_table'>
+					<td><strong>UNIVERSITY</strong></td>
+					<td><strong>COLLEGE</strong></td>
+					<td><strong>DEPARTMENT</strong></td>
+					<td><strong>YEAR</strong></td>
+					<td><strong>TITLE</strong></td>
+					<td><strong>ABSTRACT</strong></td>
+					<td><strong>SECTION</strong></td>
+					<td><strong>ADVISER</strong></td>
+					<td><strong>PROPONENT 1</strong></td>
+					<td><strong>PROPONENT 2</strong></td>
+					<td><strong>PROPONENT 3</strong></td>
+					<td><strong>PROPONENT 4</strong></td>
+					<td><strong>PROPONENT 5</strong></td>
+					<td><strong>REMARKS</strong></td>
+				</tr>
+		
+			{% for thesis in thesis_list %}
+			
+				<tr class='thesis_table1'>
+					<td>{{thesis.university}}</td> 
+					<td>{{thesis.college}}</td>
+					<td>{{thesis.department}}</td>
+					<td>{{thesis.yearlist}}</td>
+					<td class="basta">{{thesis.title}}</td>
+					<td>{{thesis.abstract}}</td>
+					<td>{{thesis.section}}</td>
+					<td>{{thesis.adviser}}</td>
+					<td class="basta">{{thesis.member1}}</td>
+					<td class="basta">{{thesis.member2}}</td>
+					<td class="basta">{{thesis.member3}}</td>
+					<td class="basta">{{thesis.member4}}</td>
+					<td class="basta">{{thesis.member5}}</td>
+					<td><a href='/thesis/{{thesis.key.id()}}'> View Details</a></td>
+				</tr>
+			{% endfor %}
+			
+			</center>
+			</table>
+			</center>
+		</div>
+
+		<script> 
+		(function ($) {
+		  jQuery.expr[':'].Contains = function(a,i,m){
+			  return (a.textContent || a.innerText || "").toUpperCase().indexOf(m[3].toUpperCase())>=0;
+		  };
+		 
+		  function listFilter(header, list) {
+			var form = $("<form>").attr({"class":"filterform","action":"#"}),
+				input = $("<input>").attr({"class":"filterinput","type":"text","placeholder":"Enter a thesis' title or proponent's name here...","autofocus":"yes"});
+			$(form).append(input).appendTo(header);
+		 
+			$(input)
+			  .change( function () {
+				var filter = $(this).val();
+				if(filter) {
+				  $(list).find(".basta:not(:Contains(" + filter + "))").parent().slideUp();
+				  $(list).find(".basta:Contains(" + filter + ")").parent().slideDown();
+				} else {
+				  $(list).find("tr").slideDown();
+				}
+				return false;
+			  })
+			.keyup( function () {
+				$(this).change();
+			});
+		  }
+		
+		  $(function () {
+			listFilter($("#searchbar"), $("#list"));
+		  });
+		}(jQuery));
+		</script> 
+	</body>
+</html>
